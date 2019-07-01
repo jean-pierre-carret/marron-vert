@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: apache2
+  namespace: blog
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+        app: vert
+  template:
+    metadata:
+      labels:
+        app: vert
+    spec:
+      containers:
+      - name: apache2
+        image: docker.io/jpcarret/docker_apache2
+        ports:
+        - containerPort: 80
+

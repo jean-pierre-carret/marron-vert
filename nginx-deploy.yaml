@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nginx
+  namespace: blog
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+        app: marron-vert
+  template:
+    metadata:
+      labels:
+        app: marron-vert
+    spec:
+      containers:
+      - name: nginx
+        image: docker.io/jpcarret/docker_nginx:latest
+        ports:
+        - containerPort: 80
